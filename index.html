@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fer — Full-Stack Developer</title>
+  <title>Fernando Ancajima — Full-Stack Developer</title>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -16,320 +16,34 @@
             body: ['DM Sans', 'sans-serif'],
           },
           colors: {
-            bg: '#080c12',
-            surface: '#0f1520',
-            card: '#131c2b',
-            border: '#1e2d42',
-            accent: '#00d4ff',
-            accent2: '#7c3aed',
-            accent3: '#10b981',
-            muted: '#4a6080',
-            text: '#c8d8ec',
-            bright: '#f0f6ff',
+            bg: '#080c12', surface: '#0f1520', card: '#131c2b',
+            border: '#1e2d42', accent: '#00d4ff', accent2: '#7c3aed',
+            accent3: '#10b981', muted: '#4a6080', text: '#c8d8ec', bright: '#f0f6ff',
           },
           animation: {
-            'fade-up': 'fadeUp 0.7s ease forwards',
-            'fade-in': 'fadeIn 1s ease forwards',
             'pulse-slow': 'pulse 4s ease-in-out infinite',
             'float': 'float 6s ease-in-out infinite',
-            'scan': 'scan 3s linear infinite',
-            'glow': 'glow 2s ease-in-out infinite alternate',
+            'scan': 'scan 8s linear infinite',
           },
           keyframes: {
-            fadeUp: {
-              '0%': { opacity: '0', transform: 'translateY(30px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            },
-            fadeIn: {
-              '0%': { opacity: '0' },
-              '100%': { opacity: '1' },
-            },
-            float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-12px)' },
-            },
-            scan: {
-              '0%': { transform: 'translateY(-100%)' },
-              '100%': { transform: 'translateY(100vh)' },
-            },
-            glow: {
-              '0%': { boxShadow: '0 0 20px rgba(0,212,255,0.3)' },
-              '100%': { boxShadow: '0 0 40px rgba(0,212,255,0.7)' },
-            }
+            float: { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-12px)' } },
+            scan: { '0%': { transform: 'translateY(-100%)' }, '100%': { transform: 'translateY(100vh)' } },
           }
         }
       }
     }
   </script>
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      background-color: #080c12;
-      color: #c8d8ec;
-      font-family: 'DM Sans', sans-serif;
-      overflow-x: hidden;
-    }
-
-    /* Grid background */
-    .grid-bg {
-      background-image:
-        linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-
-    /* Noise texture */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.4;
-    }
-
-    /* Scan line */
-    .scan-line {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(0,212,255,0.4), transparent);
-      animation: scan 8s linear infinite;
-      pointer-events: none;
-      z-index: 100;
-    }
-
-    /* Hero gradient orbs */
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      pointer-events: none;
-    }
-    .orb-1 {
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(0,212,255,0.12) 0%, transparent 70%);
-      top: -100px; right: -100px;
-      animation: float 8s ease-in-out infinite;
-    }
-    .orb-2 {
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%);
-      bottom: -50px; left: -50px;
-      animation: float 10s ease-in-out infinite reverse;
-    }
-
-    /* Tech badge */
-    .tech-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      background: rgba(0,212,255,0.06);
-      border: 1px solid rgba(0,212,255,0.2);
-      border-radius: 6px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: #00d4ff;
-      transition: all 0.3s ease;
-    }
-    .tech-badge:hover {
-      background: rgba(0,212,255,0.12);
-      border-color: rgba(0,212,255,0.5);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 20px rgba(0,212,255,0.15);
-    }
-
-    /* Skill card */
-    .skill-card {
-      background: #0f1520;
-      border: 1px solid #1e2d42;
-      border-radius: 16px;
-      padding: 28px;
-      transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .skill-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--accent-line, linear-gradient(90deg, #00d4ff, #7c3aed));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .skill-card:hover::before { opacity: 1; }
-    .skill-card:hover {
-      border-color: rgba(0,212,255,0.3);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-    }
-
-    /* Nav */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 50;
-      background: rgba(8,12,18,0.85);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid #1e2d42;
-    }
-    .nav-link {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: #4a6080;
-      text-decoration: none;
-      transition: color 0.3s;
-      letter-spacing: 0.05em;
-    }
-    .nav-link:hover { color: #00d4ff; }
-
-    /* Section reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Progress bar */
-    .progress-bar {
-      height: 3px;
-      background: #1e2d42;
-      border-radius: 99px;
-      overflow: hidden;
-      position: relative;
-    }
-    .progress-fill {
-      height: 100%;
-      border-radius: 99px;
-      width: 0%;
-      transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    /* Project card */
-    .project-card {
-      background: #0f1520;
-      border: 1px solid #1e2d42;
-      border-radius: 16px;
-      overflow: hidden;
-      transition: all 0.4s ease;
-    }
-    .project-card:hover {
-      border-color: rgba(0,212,255,0.3);
-      transform: translateY(-6px);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
-    }
-
-    /* Cursor dot */
-    .cursor-dot {
-      width: 8px; height: 8px;
-      background: #00d4ff;
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transition: transform 0.1s ease;
-      mix-blend-mode: screen;
-    }
-
-    /* Glitch text */
-    @keyframes glitch1 {
-      0%, 100% { clip-path: inset(0 0 98% 0); transform: translate(-4px, 0); }
-      20% { clip-path: inset(40% 0 50% 0); transform: translate(4px, 0); }
-      40% { clip-path: inset(70% 0 10% 0); transform: translate(-2px, 0); }
-      60% { clip-path: inset(10% 0 80% 0); transform: translate(3px, 0); }
-      80% { clip-path: inset(60% 0 30% 0); transform: translate(-3px, 0); }
-    }
-    .glitch-wrap { position: relative; display: inline-block; }
-    .glitch-wrap::before, .glitch-wrap::after {
-      content: attr(data-text);
-      position: absolute;
-      top: 0; left: 0;
-      background: transparent;
-    }
-    .glitch-wrap::before {
-      color: #00d4ff;
-      animation: glitch1 4s infinite;
-      animation-delay: 2s;
-      opacity: 0.6;
-    }
-    .glitch-wrap::after {
-      color: #7c3aed;
-      animation: glitch1 4s infinite reverse;
-      animation-delay: 3s;
-      opacity: 0.4;
-    }
-
-    /* Tag */
-    .tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      padding: 3px 8px;
-      border-radius: 4px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    /* Timeline */
-    .timeline-item {
-      position: relative;
-      padding-left: 28px;
-      border-left: 1px solid #1e2d42;
-      padding-bottom: 32px;
-    }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -5px; top: 6px;
-      width: 9px; height: 9px;
-      border-radius: 50%;
-      background: #00d4ff;
-      box-shadow: 0 0 12px rgba(0,212,255,0.6);
-    }
-    .timeline-item:last-child { padding-bottom: 0; }
-
-    /* Contact link */
-    .contact-link {
-      display: flex; align-items: center; gap: 12px;
-      padding: 16px 20px;
-      border: 1px solid #1e2d42;
-      border-radius: 12px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      color: #c8d8ec;
-    }
-    .contact-link:hover {
-      border-color: rgba(0,212,255,0.4);
-      background: rgba(0,212,255,0.05);
-      transform: translateX(4px);
-    }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: #080c12; }
-    ::-webkit-scrollbar-thumb { background: #1e2d42; border-radius: 2px; }
-    ::-webkit-scrollbar-thumb:hover { background: #00d4ff; }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body class="grid-bg">
 
-  <!-- Scan line effect -->
   <div class="scan-line"></div>
-  <!-- Cursor -->
   <div class="cursor-dot" id="cursor"></div>
 
   <!-- NAV -->
   <nav>
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <span class="font-mono text-accent text-sm font-medium tracking-widest">fer.dev</span>
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <span class="font-mono text-accent text-sm font-medium tracking-widest">fernando.dev</span>
       <div class="hidden md:flex items-center gap-8">
         <a href="#skills" class="nav-link">./stack</a>
         <a href="#projects" class="nav-link">./proyectos</a>
@@ -347,81 +61,68 @@
   <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
-
-    <div class="max-w-6xl mx-auto px-6 w-full relative z-10">
+    <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <!-- Left -->
-        <div style="animation: fadeUp 0.8s ease forwards;">
+        <div style="animation:fadeUp 0.8s ease forwards;">
           <div class="tech-badge mb-6" style="display:inline-flex;">
             <span class="w-2 h-2 rounded-full bg-accent3 animate-pulse-slow"></span>
-            Full-Stack Developer · Lima, Perú
+            Full Stack Developer · Lima, Perú
           </div>
-
-          <h1 class="font-display text-6xl lg:text-7xl font-800 leading-none mb-4" style="font-weight:800; color: #f0f6ff;">
-            <span class="glitch-wrap" data-text="Fer">Fer</span>
+          <h1 class="font-display leading-none mb-1" style="font-size:clamp(3rem,7vw,5rem);font-weight:800;color:#f0f6ff;">
+            <span class="glitch-wrap" data-text="Fernando">Fernando</span>
           </h1>
-          <h2 class="font-display text-4xl lg:text-5xl font-700 mb-6" style="font-weight:700;">
-            <span style="background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-              Arquitecto de<br/>experiencias digitales
-            </span>
+          <h1 class="font-display leading-none mb-5" style="font-size:clamp(3rem,7vw,5rem);font-weight:800;color:#f0f6ff;">Ancajima</h1>
+          <h2 class="font-display text-2xl lg:text-3xl font-bold mb-6">
+            <span style="background:linear-gradient(135deg,#00d4ff 0%,#7c3aed 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Arquitecto de experiencias digitales</span>
           </h2>
-
-          <p class="text-muted text-lg leading-relaxed mb-8 max-w-lg font-body">
-            Construyo sistemas robustos desde la base de datos hasta la interfaz.
-            Especializado en <span class="text-accent">Angular</span>, <span style="color:#10b981">NestJS</span>,
-            <span style="color:#a78bfa">.NET</span>, <span class="text-accent">Next.js</span> y <span style="color:#f59e0b">SQL Server</span>.
+          <p class="text-muted text-lg leading-relaxed mb-8 max-w-lg">
+            Full Stack Developer con <span style="color:#f0f6ff;">+6 años de experiencia</span> construyendo sistemas web escalables.
+            He trabajado en <span class="text-accent">NttData</span>, <span style="color:#a78bfa;">Stefanini–Telefónica</span> y <span style="color:#10b981;">Zeit Perú</span>.
           </p>
-
           <div class="flex flex-wrap gap-3 mb-10">
-            <span class="tech-badge" style="--tw-border-opacity:1;">Angular 20</span>
-            <span class="tech-badge" style="color:#10b981; border-color:rgba(16,185,129,0.3); background:rgba(16,185,129,0.06);">NestJS</span>
-            <span class="tech-badge" style="color:#a78bfa; border-color:rgba(167,139,250,0.3); background:rgba(167,139,250,0.06);">.NET 8</span>
-            <span class="tech-badge" style="color:#f0f0f0; border-color:rgba(240,240,240,0.2); background:rgba(240,240,240,0.04);">Next.js 14</span>
-            <span class="tech-badge" style="color:#f59e0b; border-color:rgba(245,158,11,0.3); background:rgba(245,158,11,0.06);">SQL Server</span>
+            <span class="tech-badge">Angular 20</span>
+            <span class="tech-badge" style="color:#10b981;border-color:rgba(16,185,129,0.3);background:rgba(16,185,129,0.06);">NestJS</span>
+            <span class="tech-badge" style="color:#a78bfa;border-color:rgba(167,139,250,0.3);background:rgba(167,139,250,0.06);">.NET 8</span>
+            <span class="tech-badge" style="color:#f0f0f0;border-color:rgba(240,240,240,0.2);background:rgba(240,240,240,0.04);">Next.js 14</span>
+            <span class="tech-badge" style="color:#f59e0b;border-color:rgba(245,158,11,0.3);background:rgba(245,158,11,0.06);">SQL Server</span>
           </div>
-
           <div class="flex gap-4">
-            <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-display font-semibold text-bg text-sm transition-all hover:scale-105 hover:shadow-lg"
-               style="background: linear-gradient(135deg, #00d4ff, #0099cc); box-shadow: 0 0 30px rgba(0,212,255,0.3);">
+            <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-display font-semibold text-bg text-sm transition-all hover:scale-105" style="background:linear-gradient(135deg,#00d4ff,#0099cc);box-shadow:0 0 30px rgba(0,212,255,0.3);">
               Ver proyectos
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
-            <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-display font-semibold text-sm border border-border hover:border-accent hover:text-accent transition-all" style="color:#c8d8ec;">
-              Contactar
-            </a>
+            <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-display font-semibold text-sm border border-border hover:border-accent hover:text-accent transition-all" style="color:#c8d8ec;">Contactar</a>
           </div>
         </div>
 
-        <!-- Right — Terminal -->
-        <div style="animation: fadeUp 1s ease 0.2s both;">
-          <div class="skill-card" style="font-family:'JetBrains Mono',monospace; font-size:13px;">
-            <!-- Terminal header -->
+        <!-- Terminal -->
+        <div style="animation:fadeUp 1s ease 0.2s both;">
+          <div class="skill-card" style="font-family:'JetBrains Mono',monospace;font-size:13px;">
             <div class="flex items-center gap-2 mb-5 pb-4" style="border-bottom:1px solid #1e2d42;">
               <div class="flex gap-2">
                 <div class="w-3 h-3 rounded-full" style="background:#ef4444;"></div>
                 <div class="w-3 h-3 rounded-full" style="background:#f59e0b;"></div>
                 <div class="w-3 h-3 rounded-full" style="background:#10b981;"></div>
               </div>
-              <span class="text-muted text-xs ml-2">~/fer/portfolio ~</span>
+              <span class="text-muted text-xs ml-2">~/fernando/portfolio ~</span>
             </div>
-            <!-- Content -->
             <div class="space-y-3 text-sm leading-relaxed" style="color:#4a6080;">
               <div><span style="color:#00d4ff;">$</span> <span style="color:#c8d8ec;">whoami</span></div>
-              <div class="ml-4" style="color:#10b981;">→ Full-Stack Developer | 5+ años exp.</div>
-              <div class="mt-3"><span style="color:#00d4ff;">$</span> <span style="color:#c8d8ec;">cat skills.json</span></div>
+              <div class="ml-4" style="color:#10b981;">→ Full-Stack Dev | 6+ años | Lima, Perú</div>
+              <div><span style="color:#00d4ff;">$</span> <span style="color:#c8d8ec;">cat experience.json</span></div>
               <div class="ml-4 space-y-1">
-                <div><span style="color:#7c3aed;">"frontend"</span><span style="color:#c8d8ec;">:</span> <span style="color:#f59e0b;">["Angular 20", "Next.js 14", "TailwindCSS"]</span><span style="color:#c8d8ec;">,</span></div>
-                <div><span style="color:#7c3aed;">"backend"</span><span style="color:#c8d8ec;">:</span> <span style="color:#f59e0b;">["NestJS", ".NET 8", "REST", "GraphQL"]</span><span style="color:#c8d8ec;">,</span></div>
-                <div><span style="color:#7c3aed;">"db"</span><span style="color:#c8d8ec;">:</span> <span style="color:#f59e0b;">["SQL Server", "PostgreSQL", "Redis"]</span><span style="color:#c8d8ec;">,</span></div>
-                <div><span style="color:#7c3aed;">"tools"</span><span style="color:#c8d8ec;">:</span> <span style="color:#f59e0b;">["Docker", "Git", "CI/CD", "Azure"]</span></div>
+                <div><span style="color:#7c3aed;">"current"</span>: <span style="color:#f59e0b;">"Disponible · 2026"</span></div>
+                <div><span style="color:#7c3aed;">"prev_1"</span>: <span style="color:#f59e0b;">"NttData · Oct 2025 – Ene 2026"</span></div>
+                <div><span style="color:#7c3aed;">"prev_2"</span>: <span style="color:#f59e0b;">"Zeit Perú · Ago 2024 – May 2025"</span></div>
+                <div><span style="color:#7c3aed;">"prev_3"</span>: <span style="color:#f59e0b;">"Stefanini-Telefónica · 2022–2024"</span></div>
               </div>
-              <div class="mt-3"><span style="color:#00d4ff;">$</span> <span style="color:#c8d8ec;">git log --oneline</span></div>
+              <div><span style="color:#00d4ff;">$</span> <span style="color:#c8d8ec;">cat skills.json</span></div>
               <div class="ml-4 space-y-1">
-                <div><span style="color:#f59e0b;">a3f2c1b</span> feat: SourcingPlan confidentiality filter</div>
-                <div><span style="color:#f59e0b;">7d8e9f0</span> fix: stored procedure optimization</div>
-                <div><span style="color:#f59e0b;">2b4a8c3</span> feat: Zustand state management</div>
+                <div><span style="color:#7c3aed;">"frontend"</span>: <span style="color:#f59e0b;">["Angular","React","Next.js","NgRx"]</span>,</div>
+                <div><span style="color:#7c3aed;">"backend"</span>: <span style="color:#f59e0b;">["NestJS",".NET","Node.js"]</span>,</div>
+                <div><span style="color:#7c3aed;">"db"</span>: <span style="color:#f59e0b;">["SQL Server","PostgreSQL","MySQL","MongoDB"]</span></div>
               </div>
-              <div class="mt-3 flex items-center gap-2">
+              <div class="flex items-center gap-2 mt-3">
                 <span style="color:#00d4ff;">$</span>
                 <span class="inline-block w-2 h-4 bg-accent" style="animation:pulse 1s step-end infinite;"></span>
               </div>
@@ -434,413 +135,347 @@
 
   <!-- STACK SECTION -->
   <section id="skills" class="py-28 relative">
-    <div class="max-w-6xl mx-auto px-6">
-      <!-- Header -->
+    <div class="max-w-7xl mx-auto px-6">
       <div class="reveal mb-16">
         <div class="tech-badge mb-4" style="display:inline-flex;">01. STACK TECNOLÓGICO</div>
-        <h2 class="font-display text-4xl lg:text-5xl font-bold" style="color:#f0f6ff;">
-          Herramientas que<br/><span style="color:#00d4ff;">domino</span>
-        </h2>
+        <h2 class="font-display text-4xl lg:text-5xl font-bold" style="color:#f0f6ff;">Herramientas que<br/><span style="color:#00d4ff;">domino</span></h2>
       </div>
 
-      <!-- Cards grid -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <!-- Angular -->
-        <div class="reveal skill-card" style="--accent-line: linear-gradient(90deg, #dd0031, #c3002f);">
-          <div class="flex items-start justify-between mb-5">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(221,0,49,0.12); border:1px solid rgba(221,0,49,0.3);">
+        <div class="reveal skill-card" style="--accent-line:linear-gradient(90deg,#dd0031,#c3002f);">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(221,0,49,0.12);border:1px solid rgba(221,0,49,0.3);">
               <svg viewBox="0 0 250 250" class="w-7 h-7" fill="#dd0031"><path d="M125 30L31.9 63.2l14.2 123.1L125 230l78.9-43.7 14.2-123.1z"/><path fill="#c3002f" d="M125 30v22.2-.1V230l78.9-43.7 14.2-123.1L125 30z"/><path fill="#fff" d="M125 52.1L66.8 182.6h21.7l11.7-29.2h49.4l11.7 29.2H183L125 52.1zm17 83.3h-34l17-40.9 17 40.9z"/></svg>
             </div>
-            <span class="tag" style="background:rgba(221,0,49,0.12); color:#ff4d6d;">Angular 20</span>
+            <span class="tag" style="background:rgba(221,0,49,0.12);color:#ff4d6d;">Angular 20</span>
           </div>
           <h3 class="font-display font-bold text-xl mb-2" style="color:#f0f6ff;">Angular</h3>
-          <p class="text-muted text-sm leading-relaxed mb-5">Framework principal para SPAs enterprise. Signals, standalone components, lazy loading y arquitectura modular.</p>
-          <div class="space-y-3">
-            <div>
-              <div class="flex justify-between text-xs mb-1">
-                <span class="font-mono text-muted">Signals & RxJS</span><span style="color:#dd0031;">95%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" data-width="95" style="background:linear-gradient(90deg,#dd0031,#ff4d6d);"></div></div>
-            </div>
-            <div>
-              <div class="flex justify-between text-xs mb-1">
-                <span class="font-mono text-muted">Standalone Components</span><span style="color:#dd0031;">90%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" data-width="90" style="background:linear-gradient(90deg,#dd0031,#ff4d6d);"></div></div>
-            </div>
-            <div>
-              <div class="flex justify-between text-xs mb-1">
-                <span class="font-mono text-muted">TailwindCSS + PrimeNG</span><span style="color:#dd0031;">92%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" data-width="92" style="background:linear-gradient(90deg,#dd0031,#ff4d6d);"></div></div>
-            </div>
+          <p class="text-muted text-sm leading-relaxed mb-4">Framework principal para SPAs enterprise. Arquitectura modular, rendimiento optimizado y componentes reutilizables a escala.</p>
+          <p class="font-mono text-xs mb-3" style="color:#4a6080;">// casos de uso</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="use-chip" style="background:rgba(221,0,49,0.08);color:#ff6b80;border:1px solid rgba(221,0,49,0.2);">⚡ Lazy Loading</span>
+            <span class="use-chip" style="background:rgba(221,0,49,0.08);color:#ff6b80;border:1px solid rgba(221,0,49,0.2);">🔄 NgRx / Signals</span>
+            <span class="use-chip" style="background:rgba(221,0,49,0.08);color:#ff6b80;border:1px solid rgba(221,0,49,0.2);">📊 Apache Echarts</span>
+            <span class="use-chip" style="background:rgba(221,0,49,0.08);color:#ff6b80;border:1px solid rgba(221,0,49,0.2);">🧪 Jest · Jasmine</span>
+            <span class="use-chip" style="background:rgba(221,0,49,0.08);color:#ff6b80;border:1px solid rgba(221,0,49,0.2);">🎨 Design Systems</span>
           </div>
-          <div class="flex flex-wrap gap-2 mt-5">
-            <span class="tag" style="background:#1a0a0e; color:#ff4d6d;">Signals</span>
-            <span class="tag" style="background:#1a0a0e; color:#ff4d6d;">SSR</span>
-            <span class="tag" style="background:#1a0a0e; color:#ff4d6d;">NgRx</span>
-            <span class="tag" style="background:#1a0a0e; color:#ff4d6d;">TailwindCSS</span>
+          <div class="pt-4 flex flex-wrap gap-2" style="border-top:1px solid #1e2d42;">
+            <span class="tag" style="background:#1a0a0e;color:#ff4d6d;">NttData</span>
+            <span class="tag" style="background:#1a0a0e;color:#ff4d6d;">Zeit</span>
+            <span class="tag" style="background:#1a0a0e;color:#ff4d6d;">Stefanini</span>
+            <span class="tag" style="background:#1a0a0e;color:#ff4d6d;">+3 más</span>
           </div>
         </div>
 
         <!-- NestJS -->
-        <div class="reveal skill-card" style="--accent-line: linear-gradient(90deg, #e0234e, #10b981);">
-          <div class="flex items-start justify-between mb-5">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(224,35,78,0.12); border:1px solid rgba(224,35,78,0.3);">
-              <svg viewBox="0 0 256 256" class="w-7 h-7" fill="#e0234e"><path d="M196 35.8c-3.7-1.5-7.8-.2-10.1 3.1l-54.9 82.2L76.1 38.9c-2.3-3.3-6.4-4.6-10.1-3.1C62.3 37.3 60 41 60 45v166c0 5.5 4.5 10 10 10s10-4.5 10-10V80.4l47.9 71.8c1.9 2.8 5 4.5 8.3 4.5s6.4-1.7 8.3-4.5L196 80.4V211c0 5.5 4.5 10 10 10s10-4.5 10-10V45c0-4-2.3-7.7-6-9.2z"/></svg>
+        <div class="reveal skill-card" style="--accent-line:linear-gradient(90deg,#e0234e,#10b981);">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(224,35,78,0.12);border:1px solid rgba(224,35,78,0.3);">
+              <svg viewBox="0 0 24 24" class="w-7 h-7" fill="#e0234e"><path d="M14.131.047c-.173 0-.334.037-.483.087.316.21.49.49.576.806.007.043.021.086.021.13.009.245-.08.481-.266.666-.204.196-.478.317-.77.317-.295 0-.57-.12-.768-.317-.087-.085-.163-.19-.216-.305-.093.278-.121.574-.027.868.185.578.793.906 1.371.72a1.1 1.1 0 0 0 .71-.695c.008-.03.018-.058.022-.088.099-.521-.19-1.034-.67-1.189z"/><path d="M19.284 5.47c-.166-.29-.348-.525-.547-.732l-.005-.006c-.002-.002-.004-.005-.006-.007-.082-.081-.165-.16-.25-.234-.42-.374-.883-.643-1.35-.79A5.178 5.178 0 0 0 15.7 3.46h-.01c-.404-.003-.821.053-1.233.176-1.135.337-2.05 1.08-2.609 2.052-.234.406-.394.854-.486 1.324-.04.207-.066.42-.066.638 0 .44.088.86.248 1.242.33.784.925 1.43 1.693 1.808.426.21.905.33 1.41.33.51 0 .991-.12 1.42-.33.771-.377 1.363-1.024 1.693-1.808.162-.38.25-.8.25-1.242 0-.218-.027-.43-.067-.638-.09-.47-.252-.918-.486-1.324l-.002-.002-.003-.003-.003-.003z"/><path d="M21.843 8.604c-.008-.03-.018-.06-.026-.09a4.93 4.93 0 0 0-.335-.845c-.02-.042-.04-.083-.063-.124a5.138 5.138 0 0 0-1.89-1.9c-.043-.025-.085-.047-.128-.07a4.892 4.892 0 0 0-.84-.334c-.032-.01-.063-.018-.095-.027a4.857 4.857 0 0 0-1.246-.162c-.435 0-.856.059-1.255.168-.032.01-.062.017-.093.027a4.894 4.894 0 0 0-.84.334c-.043.023-.086.046-.129.07a5.15 5.15 0 0 0-1.889 1.9c-.023.04-.044.082-.063.124a4.938 4.938 0 0 0-.335.845c-.01.03-.018.06-.027.09a4.864 4.864 0 0 0-.162 1.248c0 .434.058.857.162 1.258.01.029.018.06.027.089.09.292.21.572.335.845.018.042.04.083.063.124a5.14 5.14 0 0 0 1.89 1.9c.043.025.085.048.128.07.27.134.548.244.84.334.03.01.061.018.093.027.4.108.82.167 1.255.167.434 0 .856-.059 1.255-.167.032-.01.063-.017.095-.027a4.88 4.88 0 0 0 .84-.334c.043-.022.086-.045.128-.07a5.134 5.134 0 0 0 1.89-1.9c.023-.04.044-.082.063-.124.125-.273.244-.553.335-.845.01-.03.018-.06.026-.09.106-.4.163-.823.163-1.258 0-.435-.057-.857-.163-1.248zM12 21.865c-.657 0-1.189-.531-1.189-1.188 0-.658.532-1.19 1.189-1.19.657 0 1.189.532 1.189 1.19 0 .657-.532 1.188-1.189 1.188z"/></svg>
             </div>
-            <span class="tag" style="background:rgba(224,35,78,0.12); color:#e0234e;">Backend</span>
+            <span class="tag" style="background:rgba(224,35,78,0.12);color:#e0234e;">Backend</span>
           </div>
           <h3 class="font-display font-bold text-xl mb-2" style="color:#f0f6ff;">NestJS</h3>
-          <p class="text-muted text-sm leading-relaxed mb-5">Framework Node.js enterprise con TypeScript. Módulos, guards, interceptors, microservicios y arquitectura hexagonal.</p>
-          <div class="space-y-3">
-            <div>
-              <div class="flex justify-between text-xs mb-1">
-                <span class="font-mono text-muted">REST APIs & Guards</span><span style="color:#e0234e;">90%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" data-width="90" style="background:linear-gradient(90deg,#e0234e,#10b981);"></div></div>
-            </div>
-            <div>
-              <div class="flex justify-between text-xs mb-1">
-                <span class="font-mono text-muted">Módulos & Decoradores</span><span style="color:#e0234e;">88%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" data-width="88" style="background:linear-gradient(90deg,#e0234e,#10b981);"></div></div>
-            </div>
-            <div>
-              <div class="flex justify-between text-xs mb-1">
-                <span class="font-mono text-muted">TypeORM / Prisma</span><span style="color:#e0234e;">82%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" data-width="82" style="background:linear-gradient(90deg,#e0234e,#10b981);"></div></div>
-            </div>
+          <p class="text-muted text-sm leading-relaxed mb-4">APIs REST enterprise con TypeScript. Módulos, guards, decoradores e integración con TypeORM para flujos de datos complejos.</p>
+          <p class="font-mono text-xs mb-3" style="color:#4a6080;">// casos de uso</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="use-chip" style="background:rgba(16,185,129,0.08);color:#34d399;border:1px solid rgba(16,185,129,0.2);">🔐 JWT Auth</span>
+            <span class="use-chip" style="background:rgba(16,185,129,0.08);color:#34d399;border:1px solid rgba(16,185,129,0.2);">🗃️ TypeORM</span>
+            <span class="use-chip" style="background:rgba(16,185,129,0.08);color:#34d399;border:1px solid rgba(16,185,129,0.2);">📡 REST APIs</span>
+            <span class="use-chip" style="background:rgba(16,185,129,0.08);color:#34d399;border:1px solid rgba(16,185,129,0.2);">🔌 API SUNAT</span>
+            <span class="use-chip" style="background:rgba(16,185,129,0.08);color:#34d399;border:1px solid rgba(16,185,129,0.2);">📦 Módulos</span>
           </div>
-          <div class="flex flex-wrap gap-2 mt-5">
-            <span class="tag" style="background:#0d1a14; color:#10b981;">Guards</span>
-            <span class="tag" style="background:#0d1a14; color:#10b981;">JWT</span>
-            <span class="tag" style="background:#0d1a14; color:#10b981;">Swagger</span>
-            <span class="tag" style="background:#0d1a14; color:#10b981;">WebSockets</span>
+          <div class="pt-4 flex flex-wrap gap-2" style="border-top:1px solid #1e2d42;">
+            <span class="tag" style="background:#0d1a14;color:#10b981;">NttData</span>
+            <span class="tag" style="background:#0d1a14;color:#10b981;">Zeit</span>
+            <span class="tag" style="background:#0d1a14;color:#10b981;">Reinnovatech</span>
           </div>
         </div>
 
         <!-- .NET -->
-        <div class="reveal skill-card" style="--accent-line: linear-gradient(90deg, #512bd4, #a78bfa);">
-          <div class="flex items-start justify-between mb-5">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(81,43,212,0.12); border:1px solid rgba(81,43,212,0.4);">
+        <div class="reveal skill-card" style="--accent-line:linear-gradient(90deg,#512bd4,#a78bfa);">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(81,43,212,0.12);border:1px solid rgba(81,43,212,0.4);">
               <svg viewBox="0 0 128 128" class="w-7 h-7"><path fill="#9b4f96" d="M1.258 47.773l-.009 32.454 62.116 35.87 62.117-35.87V47.773L63.365 12.04 1.258 47.773"/><path fill="#68217a" d="M63.365 12.04v104.057l62.117-35.87V47.773z"/><path fill="#fff" d="M21.292 79.468a2.518 2.518 0 01-2.247-1.37 2.518 2.518 0 01.26-2.626l25.42-35.9a2.518 2.518 0 012.058-1.067h10.07a2.518 2.518 0 012.058 1.067l25.42 35.9a2.518 2.518 0 01-2.058 3.996H71.65a2.517 2.517 0 01-2.038-1.04l-6.247-8.65H39.36l-6.247 8.65a2.518 2.518 0 01-2.038 1.04H21.292zM43.35 60.822h21.031l-10.516-14.56z"/></svg>
             </div>
-            <span class="tag" style="background:rgba(81,43,212,0.12); color:#a78bfa;">.NET 8</span>
+            <span class="tag" style="background:rgba(81,43,212,0.12);color:#a78bfa;">.NET 8</span>
           </div>
           <h3 class="font-display font-bold text-xl mb-2" style="color:#f0f6ff;">.NET / C#</h3>
-          <p class="text-muted text-sm leading-relaxed mb-5">APIs robustas con ASP.NET Core. Clean Architecture, Dapper para SQL de alto rendimiento, stored procedures y CQRS.</p>
-          <div class="space-y-3">
-            <div>
-              <div class="flex justify-between text-xs mb-1">
-                <span class="font-mono text-muted">ASP.NET Core</span><span style="color:#a78bfa;">93%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" data-width="93" style="background:linear-gradient(90deg,#512bd4,#a78bfa);"></div></div>
-            </div>
-            <div>
-              <div class="flex justify-between text-xs mb-1">
-                <span class="font-mono text-muted">Dapper & SQL SP</span><span style="color:#a78bfa;">96%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" data-width="96" style="background:linear-gradient(90deg,#512bd4,#a78bfa);"></div></div>
-            </div>
-            <div>
-              <div class="flex justify-between text-xs mb-1">
-                <span class="font-mono text-muted">Clean Architecture</span><span style="color:#a78bfa;">88%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" data-width="88" style="background:linear-gradient(90deg,#512bd4,#a78bfa);"></div></div>
-            </div>
+          <p class="text-muted text-sm leading-relaxed mb-4">APIs robustas con ASP.NET Core. Clean Architecture, Dapper y Entity Framework para operaciones críticas de alto rendimiento.</p>
+          <p class="font-mono text-xs mb-3" style="color:#4a6080;">// casos de uso</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="use-chip" style="background:rgba(167,139,250,0.08);color:#c4b5fd;border:1px solid rgba(167,139,250,0.2);">⚙️ Dapper + SP</span>
+            <span class="use-chip" style="background:rgba(167,139,250,0.08);color:#c4b5fd;border:1px solid rgba(167,139,250,0.2);">🏗️ MVC / Clean Arch</span>
+            <span class="use-chip" style="background:rgba(167,139,250,0.08);color:#c4b5fd;border:1px solid rgba(167,139,250,0.2);">📊 Entity Framework</span>
+            <span class="use-chip" style="background:rgba(167,139,250,0.08);color:#c4b5fd;border:1px solid rgba(167,139,250,0.2);">☁️ Deploy Azure</span>
+            <span class="use-chip" style="background:rgba(167,139,250,0.08);color:#c4b5fd;border:1px solid rgba(167,139,250,0.2);">🔒 JWT Auth</span>
           </div>
-          <div class="flex flex-wrap gap-2 mt-5">
-            <span class="tag" style="background:#0e0a1f; color:#a78bfa;">Dapper</span>
-            <span class="tag" style="background:#0e0a1f; color:#a78bfa;">CQRS</span>
-            <span class="tag" style="background:#0e0a1f; color:#a78bfa;">EF Core</span>
-            <span class="tag" style="background:#0e0a1f; color:#a78bfa;">JWT Auth</span>
+          <div class="pt-4 flex flex-wrap gap-2" style="border-top:1px solid #1e2d42;">
+            <span class="tag" style="background:#0e0a1f;color:#a78bfa;">Stefanini</span>
+            <span class="tag" style="background:#0e0a1f;color:#a78bfa;">Lucky SAC</span>
+            <span class="tag" style="background:#0e0a1f;color:#a78bfa;">Emapa</span>
           </div>
         </div>
 
         <!-- Next.js -->
-        <div class="reveal skill-card" style="--accent-line: linear-gradient(90deg, #f0f0f0, #666);">
-          <div class="flex items-start justify-between mb-5">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(240,240,240,0.06); border:1px solid rgba(240,240,240,0.15);">
-              <svg viewBox="0 0 180 180" class="w-7 h-7" fill="#f0f0f0"><mask id="m" style="mask-type:alpha" maskUnits="userSpaceOnUse"><circle cx="90" cy="90" r="90" fill="black"/></mask><g mask="url(#m)"><circle cx="90" cy="90" r="90" fill="black"/><path fill="white" d="M149.508 157.52L69.142 54H54v71.97h13.188V71.28l73.055 95.9a90.274 90.274 0 0 0 9.265-9.66z"/><rect fill="url(#g)" x="116" y="54" width="13" height="72"/><defs><linearGradient id="g" x1="116" y1="54" x2="116" y2="126" gradientUnits="userSpaceOnUse"><stop stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient></defs></g></svg>
+        <div class="reveal skill-card" style="--accent-line:linear-gradient(90deg,#f0f0f0,#666);">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(240,240,240,0.06);border:1px solid rgba(240,240,240,0.15);">
+              <svg viewBox="0 0 180 180" class="w-7 h-7" fill="#f0f0f0"><mask id="m" style="mask-type:alpha" maskUnits="userSpaceOnUse"><circle cx="90" cy="90" r="90" fill="black"/></mask><g mask="url(#m)"><circle cx="90" cy="90" r="90" fill="black"/><path fill="white" d="M149.508 157.52L69.142 54H54v71.97h13.188V71.28l73.055 95.9a90.274 90.274 0 0 0 9.265-9.66z"/><rect fill="url(#grad1)" x="116" y="54" width="13" height="72"/><defs><linearGradient id="grad1" x1="116" y1="54" x2="116" y2="126" gradientUnits="userSpaceOnUse"><stop stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient></defs></g></svg>
             </div>
-            <span class="tag" style="background:rgba(240,240,240,0.06); color:#a0a0a0;">Frontend</span>
+            <span class="tag" style="background:rgba(240,240,240,0.06);color:#a0a0a0;">Frontend</span>
           </div>
           <h3 class="font-display font-bold text-xl mb-2" style="color:#f0f6ff;">Next.js 14</h3>
-          <p class="text-muted text-sm leading-relaxed mb-5">Aplicaciones React con SSR, SSG y App Router. Server Components, streaming, optimización de imágenes y SEO avanzado.</p>
-          <div class="space-y-3">
-            <div>
-              <div class="flex justify-between text-xs mb-1">
-                <span class="font-mono text-muted">App Router & RSC</span><span style="color:#e0e0e0;">87%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" data-width="87" style="background:linear-gradient(90deg,#666,#f0f0f0);"></div></div>
-            </div>
-            <div>
-              <div class="flex justify-between text-xs mb-1">
-                <span class="font-mono text-muted">SSR / SSG / ISR</span><span style="color:#e0e0e0;">85%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" data-width="85" style="background:linear-gradient(90deg,#666,#f0f0f0);"></div></div>
-            </div>
-            <div>
-              <div class="flex justify-between text-xs mb-1">
-                <span class="font-mono text-muted">API Routes & Zustand</span><span style="color:#e0e0e0;">90%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" data-width="90" style="background:linear-gradient(90deg,#666,#f0f0f0);"></div></div>
-            </div>
+          <p class="text-muted text-sm leading-relaxed mb-4">Apps React con SSR, SSG y App Router. Server Components, optimización SEO y rendimiento web a nivel producción.</p>
+          <p class="font-mono text-xs mb-3" style="color:#4a6080;">// casos de uso</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="use-chip" style="background:rgba(240,240,240,0.04);color:#d0d0d0;border:1px solid rgba(240,240,240,0.12);">🚀 SSR / SSG</span>
+            <span class="use-chip" style="background:rgba(240,240,240,0.04);color:#d0d0d0;border:1px solid rgba(240,240,240,0.12);">🔍 SEO Técnico</span>
+            <span class="use-chip" style="background:rgba(240,240,240,0.04);color:#d0d0d0;border:1px solid rgba(240,240,240,0.12);">📱 Responsivo</span>
+            <span class="use-chip" style="background:rgba(240,240,240,0.04);color:#d0d0d0;border:1px solid rgba(240,240,240,0.12);">⚡ Performance web</span>
+            <span class="use-chip" style="background:rgba(240,240,240,0.04);color:#d0d0d0;border:1px solid rgba(240,240,240,0.12);">🎣 App Router</span>
           </div>
-          <div class="flex flex-wrap gap-2 mt-5">
-            <span class="tag" style="background:#111; color:#e0e0e0;">App Router</span>
-            <span class="tag" style="background:#111; color:#e0e0e0;">Zustand</span>
-            <span class="tag" style="background:#111; color:#e0e0e0;">Vercel</span>
-            <span class="tag" style="background:#111; color:#e0e0e0;">Middleware</span>
+          <div class="pt-4 flex flex-wrap gap-2" style="border-top:1px solid #1e2d42;">
+            <span class="tag" style="background:#111;color:#d0d0d0;">Zeit Perú</span>
+            <span class="tag" style="background:#111;color:#d0d0d0;">Stefanini</span>
           </div>
         </div>
 
         <!-- SQL Server -->
-        <div class="reveal skill-card" style="--accent-line: linear-gradient(90deg, #f59e0b, #ef4444);">
-          <div class="flex items-start justify-between mb-5">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.3);">
+        <div class="reveal skill-card" style="--accent-line:linear-gradient(90deg,#f59e0b,#ef4444);">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);">
               <svg viewBox="0 0 24 24" class="w-7 h-7" fill="#f59e0b"><path d="M12 2C6.477 2 2 4.686 2 8v8c0 3.314 4.477 6 10 6s10-2.686 10-6V8c0-3.314-4.477-6-10-6zm0 2c4.418 0 8 1.791 8 4s-3.582 4-8 4-8-1.791-8-4 3.582-4 8-4zm8 10c0 2.209-3.582 4-8 4s-8-1.791-8-4v-2.268C5.604 13.492 8.647 14 12 14s6.396-.508 8-2.268V14zm0-4c0 2.209-3.582 4-8 4s-8-1.791-8-4V9.732C5.604 11.492 8.647 12 12 12s6.396-.508 8-1.268V10z"/></svg>
             </div>
-            <span class="tag" style="background:rgba(245,158,11,0.12); color:#f59e0b;">Database</span>
+            <span class="tag" style="background:rgba(245,158,11,0.12);color:#f59e0b;">Database</span>
           </div>
           <h3 class="font-display font-bold text-xl mb-2" style="color:#f0f6ff;">SQL Server</h3>
-          <p class="text-muted text-sm leading-relaxed mb-5">Diseño de base de datos, stored procedures optimizados, índices, transacciones, vistas y consultas complejas de alto rendimiento.</p>
-          <div class="space-y-3">
-            <div>
-              <div class="flex justify-between text-xs mb-1">
-                <span class="font-mono text-muted">Stored Procedures</span><span style="color:#f59e0b;">97%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" data-width="97" style="background:linear-gradient(90deg,#f59e0b,#ef4444);"></div></div>
-            </div>
-            <div>
-              <div class="flex justify-between text-xs mb-1">
-                <span class="font-mono text-muted">Query Optimization</span><span style="color:#f59e0b;">91%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" data-width="91" style="background:linear-gradient(90deg,#f59e0b,#ef4444);"></div></div>
-            </div>
-            <div>
-              <div class="flex justify-between text-xs mb-1">
-                <span class="font-mono text-muted">Diseño & Modelado</span><span style="color:#f59e0b;">88%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" data-width="88" style="background:linear-gradient(90deg,#f59e0b,#ef4444);"></div></div>
-            </div>
+          <p class="text-muted text-sm leading-relaxed mb-4">Diseño de base de datos, stored procedures optimizados, modelado de entidades y consultas de alto rendimiento.</p>
+          <p class="font-mono text-xs mb-3" style="color:#4a6080;">// casos de uso</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="use-chip" style="background:rgba(245,158,11,0.08);color:#fbbf24;border:1px solid rgba(245,158,11,0.2);">📝 Stored Procedures</span>
+            <span class="use-chip" style="background:rgba(245,158,11,0.08);color:#fbbf24;border:1px solid rgba(245,158,11,0.2);">🏛️ Modelado BD</span>
+            <span class="use-chip" style="background:rgba(245,158,11,0.08);color:#fbbf24;border:1px solid rgba(245,158,11,0.2);">⚡ Query Optimization</span>
+            <span class="use-chip" style="background:rgba(245,158,11,0.08);color:#fbbf24;border:1px solid rgba(245,158,11,0.2);">🔗 Relaciones</span>
+            <span class="use-chip" style="background:rgba(245,158,11,0.08);color:#fbbf24;border:1px solid rgba(245,158,11,0.2);">📥 Ingesta masiva</span>
           </div>
-          <div class="flex flex-wrap gap-2 mt-5">
-            <span class="tag" style="background:#1a1205; color:#f59e0b;">T-SQL</span>
-            <span class="tag" style="background:#1a1205; color:#f59e0b;">Índices</span>
-            <span class="tag" style="background:#1a1205; color:#f59e0b;">CTEs</span>
-            <span class="tag" style="background:#1a1205; color:#f59e0b;">Triggers</span>
+          <div class="pt-4 flex flex-wrap gap-2" style="border-top:1px solid #1e2d42;">
+            <span class="tag" style="background:#1a1205;color:#f59e0b;">Lucky SAC</span>
+            <span class="tag" style="background:#1a1205;color:#f59e0b;">Zeit</span>
+            <span class="tag" style="background:#1a1205;color:#f59e0b;">NttData</span>
           </div>
         </div>
 
-        <!-- DevOps & Tools -->
-        <div class="reveal skill-card" style="--accent-line: linear-gradient(90deg, #00d4ff, #10b981);">
-          <div class="flex items-start justify-between mb-5">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(0,212,255,0.08); border:1px solid rgba(0,212,255,0.2);">
+        <!-- DevOps -->
+        <div class="reveal skill-card" style="--accent-line:linear-gradient(90deg,#00d4ff,#10b981);">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);">
               <svg class="w-7 h-7" fill="none" stroke="#00d4ff" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z"/></svg>
             </div>
-            <span class="tag" style="background:rgba(0,212,255,0.06); color:#00d4ff;">DevOps</span>
+            <span class="tag" style="background:rgba(0,212,255,0.06);color:#00d4ff;">DevOps</span>
           </div>
           <h3 class="font-display font-bold text-xl mb-2" style="color:#f0f6ff;">DevOps & Cloud</h3>
-          <p class="text-muted text-sm leading-relaxed mb-5">Contenedores Docker, pipelines CI/CD, despliegues en Azure, Git flow y gestión de entornos de desarrollo y producción.</p>
-          <div class="space-y-3">
-            <div>
-              <div class="flex justify-between text-xs mb-1">
-                <span class="font-mono text-muted">Docker & Compose</span><span style="color:#00d4ff;">85%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" data-width="85" style="background:linear-gradient(90deg,#00d4ff,#10b981);"></div></div>
-            </div>
-            <div>
-              <div class="flex justify-between text-xs mb-1">
-                <span class="font-mono text-muted">Git & GitHub Actions</span><span style="color:#00d4ff;">90%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" data-width="90" style="background:linear-gradient(90deg,#00d4ff,#10b981);"></div></div>
-            </div>
-            <div>
-              <div class="flex justify-between text-xs mb-1">
-                <span class="font-mono text-muted">Azure & CI/CD</span><span style="color:#00d4ff;">78%</span>
-              </div>
-              <div class="progress-bar"><div class="progress-fill" data-width="78" style="background:linear-gradient(90deg,#00d4ff,#10b981);"></div></div>
-            </div>
+          <p class="text-muted text-sm leading-relaxed mb-4">CI/CD con Azure DevOps, versionado Git en GitHub/GitLab/Bitbucket y gestión ágil con Jira y Azure Boards.</p>
+          <p class="font-mono text-xs mb-3" style="color:#4a6080;">// casos de uso</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="use-chip" style="background:rgba(0,212,255,0.06);color:#67e8f9;border:1px solid rgba(0,212,255,0.15);">🔄 CI/CD Pipelines</span>
+            <span class="use-chip" style="background:rgba(0,212,255,0.06);color:#67e8f9;border:1px solid rgba(0,212,255,0.15);">☁️ Azure Deploy</span>
+            <span class="use-chip" style="background:rgba(0,212,255,0.06);color:#67e8f9;border:1px solid rgba(0,212,255,0.15);">🏃 Sprints / Jira</span>
+            <span class="use-chip" style="background:rgba(0,212,255,0.06);color:#67e8f9;border:1px solid rgba(0,212,255,0.15);">🌿 Git Flow</span>
+            <span class="use-chip" style="background:rgba(0,212,255,0.06);color:#67e8f9;border:1px solid rgba(0,212,255,0.15);">📋 Azure Boards</span>
           </div>
-          <div class="flex flex-wrap gap-2 mt-5">
-            <span class="tag" style="background:#041215; color:#00d4ff;">Docker</span>
-            <span class="tag" style="background:#041215; color:#00d4ff;">Azure</span>
-            <span class="tag" style="background:#041215; color:#00d4ff;">GitHub Actions</span>
+          <div class="pt-4 flex flex-wrap gap-2" style="border-top:1px solid #1e2d42;">
+            <span class="tag" style="background:#041215;color:#00d4ff;">Reinnovatech</span>
+            <span class="tag" style="background:#041215;color:#00d4ff;">Lucky SAC</span>
+            <span class="tag" style="background:#041215;color:#00d4ff;">NttData</span>
           </div>
         </div>
 
       </div>
+
+      <!-- Also section -->
+      <div class="reveal mt-12 skill-card" style="--accent-line:linear-gradient(90deg,#7c3aed,#00d4ff);">
+        <p class="font-mono text-xs mb-4" style="color:#4a6080;">// también trabajo con</p>
+        <div class="flex flex-wrap gap-3">
+          <span class="also-chip">⚛️ React</span>
+          <span class="also-chip">🌿 NgRx</span>
+          <span class="also-chip">📊 Apache Echarts</span>
+          <span class="also-chip">🎨 Material UI</span>
+          <span class="also-chip">💅 Styled Components</span>
+          <span class="also-chip">🍃 TailwindCSS</span>
+          <span class="also-chip">🐘 PostgreSQL</span>
+          <span class="also-chip">🐬 MySQL</span>
+          <span class="also-chip">🍃 MongoDB</span>
+          <span class="also-chip">🔷 TypeScript</span>
+          <span class="also-chip">🎭 Figma</span>
+          <span class="also-chip">🧪 Jest · Karma</span>
+          <span class="also-chip">🏛️ Liferay</span>
+          <span class="also-chip">☁️ Azure DevOps</span>
+          <span class="also-chip">☕ Java</span>
+          <span class="also-chip">🐘 Laravel</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- PROJECTS SECTION -->
-  <section id="projects" class="py-28 relative" style="background: linear-gradient(180deg, #080c12 0%, #0a1018 50%, #080c12 100%);">
-    <div class="max-w-6xl mx-auto px-6">
+  <section id="projects" class="py-28 relative" style="background:linear-gradient(180deg,#080c12 0%,#0a1018 50%,#080c12 100%);">
+    <div class="max-w-7xl mx-auto px-6">
       <div class="reveal mb-16">
-        <div class="tech-badge mb-4" style="display:inline-flex;">02. PROYECTOS</div>
-        <h2 class="font-display text-4xl lg:text-5xl font-bold" style="color:#f0f6ff;">
-          Cosas que he<br/><span style="color:#00d4ff;">construido</span>
-        </h2>
+        <div class="tech-badge mb-4" style="display:inline-flex;">02. PROYECTOS DESTACADOS</div>
+        <h2 class="font-display text-4xl lg:text-5xl font-bold" style="color:#f0f6ff;">Cosas que he<br/><span style="color:#00d4ff;">construido</span></h2>
+        <p class="text-muted mt-4 max-w-xl text-sm">Los 3 proyectos más representativos de mis +6 años de experiencia.</p>
       </div>
 
-      <div class="space-y-6">
+      <div class="space-y-8">
 
-        <!-- Project 1 -->
+        <!-- Project 1 — NttData / Zeit -->
         <div class="reveal project-card">
           <div class="grid lg:grid-cols-5 gap-0">
-            <!-- Image/preview side -->
-            <div class="lg:col-span-2 p-8 flex items-center justify-center" style="background:linear-gradient(135deg, rgba(81,43,212,0.1) 0%, rgba(0,212,255,0.05) 100%); border-right:1px solid #1e2d42;">
-              <div class="text-center">
-                <div class="w-20 h-20 rounded-2xl mx-auto mb-4 flex items-center justify-center" style="background:rgba(81,43,212,0.2); border:1px solid rgba(81,43,212,0.4);">
-                  <svg class="w-10 h-10" fill="none" stroke="#a78bfa" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0H3"/></svg>
+            <div class="lg:col-span-2 p-8 flex flex-col justify-between" style="background:linear-gradient(135deg,rgba(81,43,212,0.1) 0%,rgba(0,212,255,0.05) 100%);border-right:1px solid #1e2d42;">
+              <div>
+                <div class="w-16 h-16 rounded-2xl mb-5 flex items-center justify-center" style="background:rgba(81,43,212,0.2);border:1px solid rgba(81,43,212,0.4);">
+                  <svg class="w-8 h-8" fill="none" stroke="#a78bfa" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0H3"/></svg>
                 </div>
-                <div class="flex flex-wrap gap-2 justify-center">
-                  <span class="tag" style="background:rgba(167,139,250,0.12); color:#a78bfa;">.NET 8</span>
-                  <span class="tag" style="background:rgba(221,0,49,0.12); color:#dd0031;">Angular 20</span>
-                  <span class="tag" style="background:rgba(245,158,11,0.12); color:#f59e0b;">SQL Server</span>
-                </div>
+                <div class="font-mono text-xs mb-2" style="color:#4a6080;">NttData · Zeit Perú</div>
+                <h3 class="font-display font-bold text-2xl mb-3" style="color:#f0f6ff;">Sistema de Gestión Enterprise</h3>
+                <p class="text-muted text-sm leading-relaxed">Módulos administrativos con Angular, arquitectura modular escalable y sistema de confidencialidad por usuario. Integración SUNAT y Sentinel.</p>
+              </div>
+              <div class="mt-6 flex flex-wrap gap-2">
+                <span class="tag" style="background:rgba(221,0,49,0.12);color:#dd0031;">Angular</span>
+                <span class="tag" style="background:rgba(81,43,212,0.12);color:#a78bfa;">.NET</span>
+                <span class="tag" style="background:rgba(245,158,11,0.12);color:#f59e0b;">SQL Server</span>
+                <span class="tag" style="background:rgba(224,35,78,0.12);color:#e0234e;">NestJS</span>
               </div>
             </div>
-            <!-- Content -->
             <div class="lg:col-span-3 p-8">
-              <div class="flex items-start justify-between mb-3">
-                <span class="font-mono text-xs" style="color:#4a6080;">01 / ENTERPRISE</span>
-                <div class="flex gap-2">
-                  <div class="w-2 h-2 rounded-full bg-accent3 mt-1"></div>
-                  <span class="text-xs text-muted">En producción</span>
+              <div class="grid grid-cols-3 gap-3 mb-6">
+                <div class="text-center p-3 rounded-lg" style="background:#0a0f18;border:1px solid #1e2d42;">
+                  <div class="font-display font-bold text-base" style="color:#00d4ff;">NgRx</div>
+                  <div class="text-xs text-muted mt-1">State mgmt</div>
+                </div>
+                <div class="text-center p-3 rounded-lg" style="background:#0a0f18;border:1px solid #1e2d42;">
+                  <div class="font-display font-bold text-base" style="color:#a78bfa;">Dapper</div>
+                  <div class="text-xs text-muted mt-1">Data access</div>
+                </div>
+                <div class="text-center p-3 rounded-lg" style="background:#0a0f18;border:1px solid #1e2d42;">
+                  <div class="font-display font-bold text-base" style="color:#10b981;">CI/CD</div>
+                  <div class="text-xs text-muted mt-1">Azure DevOps</div>
                 </div>
               </div>
-              <h3 class="font-display font-bold text-2xl mb-3" style="color:#f0f6ff;">SourcingPlan Module</h3>
-              <p class="text-muted text-sm leading-relaxed mb-5">
-                Módulo enterprise para gestión de planes de sourcing con sistema de confidencialidad basado en usuarios. Implementación full-stack: filtros por usuario en localStorage → Zustand → .NET service layer → Dapper → SQL SP. Resolución de bugs complejos de estado con <code class="font-mono text-xs" style="color:#a78bfa;">useEffect</code> y closures.
-              </p>
-              <div class="grid grid-cols-3 gap-4 mb-5">
-                <div class="text-center p-3 rounded-lg" style="background:#0a0f18; border:1px solid #1e2d42;">
-                  <div class="font-display font-bold text-xl" style="color:#00d4ff;">SP</div>
+              <ul class="space-y-3 mb-6">
+                <li class="flex gap-3 text-sm text-muted"><span style="color:#00d4ff;flex-shrink:0;">→</span> Componentes escalables con Lazy Loading, optimización del ciclo de detección de cambios y gestión de estado con NgRx.</li>
+                <li class="flex gap-3 text-sm text-muted"><span style="color:#00d4ff;flex-shrink:0;">→</span> Sistema de confidencialidad por usuario implementado full-stack: localStorage → service layer → Dapper → SQL Stored Procedure.</li>
+                <li class="flex gap-3 text-sm text-muted"><span style="color:#00d4ff;flex-shrink:0;">→</span> Integración con API de SUNAT y Sentinel para validación documental en tiempo real.</li>
+                <li class="flex gap-3 text-sm text-muted"><span style="color:#00d4ff;flex-shrink:0;">→</span> Pruebas unitarias con Jest; gestión ágil con Jira y Azure DevOps Boards.</li>
+              </ul>
+              <div class="flex flex-wrap gap-2">
+                <span class="tag" style="background:#0e0a1f;color:#a78bfa;">Clean Architecture</span>
+                <span class="tag" style="background:#041215;color:#00d4ff;">Angular Signals</span>
+                <span class="tag" style="background:#0d1a14;color:#10b981;">TypeORM</span>
+                <span class="tag" style="background:#1a1205;color:#f59e0b;">Stored Procedures</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 — Stefanini / Telefónica -->
+        <div class="reveal project-card">
+          <div class="grid lg:grid-cols-5 gap-0">
+            <div class="lg:col-span-2 p-8 flex flex-col justify-between" style="background:linear-gradient(135deg,rgba(16,185,129,0.08) 0%,rgba(0,212,255,0.04) 100%);border-right:1px solid #1e2d42;">
+              <div>
+                <div class="w-16 h-16 rounded-2xl mb-5 flex items-center justify-center" style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);">
+                  <svg class="w-8 h-8" fill="none" stroke="#10b981" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg>
+                </div>
+                <div class="font-mono text-xs mb-2" style="color:#4a6080;">Stefanini · Telefónica (Movistar)</div>
+                <h3 class="font-display font-bold text-2xl mb-3" style="color:#f0f6ff;">Catálogo Interactivo & Design System</h3>
+                <p class="text-muted text-sm leading-relaxed">Plataforma de catálogos de equipos móviles y Design System corporativo para Movistar Perú. +2 años de trabajo continuo.</p>
+              </div>
+              <div class="mt-6 flex flex-wrap gap-2">
+                <span class="tag" style="background:rgba(221,0,49,0.12);color:#dd0031;">Angular</span>
+                <span class="tag" style="background:rgba(240,240,240,0.06);color:#d0d0d0;">Next.js</span>
+                <span class="tag" style="background:rgba(81,43,212,0.12);color:#a78bfa;">.NET + Dapper</span>
+              </div>
+            </div>
+            <div class="lg:col-span-3 p-8">
+              <div class="grid grid-cols-3 gap-3 mb-6">
+                <div class="text-center p-3 rounded-lg" style="background:#0a0f18;border:1px solid #1e2d42;">
+                  <div class="font-display font-bold text-base" style="color:#10b981;">DS</div>
+                  <div class="text-xs text-muted mt-1">Design System</div>
+                </div>
+                <div class="text-center p-3 rounded-lg" style="background:#0a0f18;border:1px solid #1e2d42;">
+                  <div class="font-display font-bold text-base" style="color:#10b981;">SEO</div>
                   <div class="text-xs text-muted mt-1">Optimizado</div>
                 </div>
-                <div class="text-center p-3 rounded-lg" style="background:#0a0f18; border:1px solid #1e2d42;">
-                  <div class="font-display font-bold text-xl" style="color:#a78bfa;">5+</div>
-                  <div class="text-xs text-muted mt-1">Capas integradas</div>
-                </div>
-                <div class="text-center p-3 rounded-lg" style="background:#0a0f18; border:1px solid #1e2d42;">
-                  <div class="font-display font-bold text-xl" style="color:#10b981;">✓</div>
-                  <div class="text-xs text-muted mt-1">Prod ready</div>
+                <div class="text-center p-3 rounded-lg" style="background:#0a0f18;border:1px solid #1e2d42;">
+                  <div class="font-display font-bold text-base" style="color:#10b981;">2yr+</div>
+                  <div class="text-xs text-muted mt-1">Movistar</div>
                 </div>
               </div>
+              <ul class="space-y-3 mb-6">
+                <li class="flex gap-3 text-sm text-muted"><span style="color:#10b981;flex-shrink:0;">→</span> Catálogos interactivos de equipos móviles con Angular; arquitectura modular y rendimiento optimizado.</li>
+                <li class="flex gap-3 text-sm text-muted"><span style="color:#10b981;flex-shrink:0;">→</span> Design System corporativo: componentes reutilizables, accesibles y alineados con lineamientos UX/UI de Telefónica.</li>
+                <li class="flex gap-3 text-sm text-muted"><span style="color:#10b981;flex-shrink:0;">→</span> Optimización SEO técnico y performance web con Next.js; páginas Movistar personalizadas con Liferay, HTML, CSS, Sass.</li>
+                <li class="flex gap-3 text-sm text-muted"><span style="color:#10b981;flex-shrink:0;">→</span> APIs .NET MVC con Entity Framework y Dapper; pruebas de integración con Jasmine y Karma.</li>
+              </ul>
               <div class="flex flex-wrap gap-2">
-                <span class="tag" style="background:#0e0a1f; color:#a78bfa;">Dapper</span>
-                <span class="tag" style="background:#0e0a1f; color:#a78bfa;">Clean Arch</span>
-                <span class="tag" style="background:#041215; color:#00d4ff;">Zustand</span>
-                <span class="tag" style="background:#0a1a0e; color:#10b981;">Confidencialidad</span>
-                <span class="tag" style="background:#1a0a0e; color:#dd0031;">Angular Signals</span>
+                <span class="tag" style="background:#0d1a14;color:#10b981;">Liferay</span>
+                <span class="tag" style="background:#111;color:#d0d0d0;">Jasmine/Karma</span>
+                <span class="tag" style="background:#041215;color:#00d4ff;">Sass</span>
+                <span class="tag" style="background:#0e0a1f;color:#a78bfa;">Dapper</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Project 2 -->
+        <!-- Project 3 — Lucky SAC / Reinnovatech -->
         <div class="reveal project-card">
           <div class="grid lg:grid-cols-5 gap-0">
-            <div class="lg:col-span-2 p-8 flex items-center justify-center" style="background:linear-gradient(135deg, rgba(16,185,129,0.1) 0%, rgba(0,212,255,0.05) 100%); border-right:1px solid #1e2d42;">
-              <div class="text-center">
-                <div class="w-20 h-20 rounded-2xl mx-auto mb-4 flex items-center justify-center" style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3);">
-                  <svg class="w-10 h-10" fill="none" stroke="#10b981" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.75c0 .415.336.75.75.75z"/></svg>
+            <div class="lg:col-span-2 p-8 flex flex-col justify-between" style="background:linear-gradient(135deg,rgba(245,158,11,0.08) 0%,rgba(239,68,68,0.04) 100%);border-right:1px solid #1e2d42;">
+              <div>
+                <div class="w-16 h-16 rounded-2xl mb-5 flex items-center justify-center" style="background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);">
+                  <svg class="w-8 h-8" fill="none" stroke="#f59e0b" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"/></svg>
                 </div>
-                <div class="flex flex-wrap gap-2 justify-center">
-                  <span class="tag" style="background:rgba(224,35,78,0.12); color:#e0234e;">NestJS</span>
-                  <span class="tag" style="background:rgba(240,240,240,0.06); color:#e0e0e0;">Next.js</span>
-                  <span class="tag" style="background:rgba(245,158,11,0.12); color:#f59e0b;">PostgreSQL</span>
-                </div>
+                <div class="font-mono text-xs mb-2" style="color:#4a6080;">Lucky SAC · Reinnovatech</div>
+                <h3 class="font-display font-bold text-2xl mb-3" style="color:#f0f6ff;">Sistema Administrativo & Analytics</h3>
+                <p class="text-muted text-sm leading-relaxed">Plataforma administrativa con ingesta masiva de datos Excel, dashboards con Apache Echarts y despliegue en Azure.</p>
+              </div>
+              <div class="mt-6 flex flex-wrap gap-2">
+                <span class="tag" style="background:rgba(221,0,49,0.12);color:#dd0031;">Angular</span>
+                <span class="tag" style="background:rgba(81,43,212,0.12);color:#a78bfa;">.NET</span>
+                <span class="tag" style="background:rgba(245,158,11,0.12);color:#f59e0b;">SQL Server</span>
+                <span class="tag" style="background:rgba(224,35,78,0.12);color:#e0234e;">NestJS</span>
               </div>
             </div>
             <div class="lg:col-span-3 p-8">
-              <div class="flex items-start justify-between mb-3">
-                <span class="font-mono text-xs" style="color:#4a6080;">02 / E-COMMERCE</span>
-                <div class="flex gap-2">
-                  <div class="w-2 h-2 rounded-full" style="background:#f59e0b;" class="mt-1"></div>
-                  <span class="text-xs text-muted">Desarrollo</span>
+              <div class="grid grid-cols-3 gap-3 mb-6">
+                <div class="text-center p-3 rounded-lg" style="background:#0a0f18;border:1px solid #1e2d42;">
+                  <div class="font-display font-bold text-base" style="color:#f59e0b;">Excel</div>
+                  <div class="text-xs text-muted mt-1">Carga masiva</div>
+                </div>
+                <div class="text-center p-3 rounded-lg" style="background:#0a0f18;border:1px solid #1e2d42;">
+                  <div class="font-display font-bold text-base" style="color:#f59e0b;">Echarts</div>
+                  <div class="text-xs text-muted mt-1">Dashboards</div>
+                </div>
+                <div class="text-center p-3 rounded-lg" style="background:#0a0f18;border:1px solid #1e2d42;">
+                  <div class="font-display font-bold text-base" style="color:#f59e0b;">Azure</div>
+                  <div class="text-xs text-muted mt-1">Producción</div>
                 </div>
               </div>
-              <h3 class="font-display font-bold text-2xl mb-3" style="color:#f0f6ff;">Dashboard E-Commerce</h3>
-              <p class="text-muted text-sm leading-relaxed mb-5">
-                Plataforma de gestión con panel administrativo en Next.js 14 con App Router y React Server Components. Backend en NestJS con autenticación JWT, roles y WebSockets para notificaciones en tiempo real.
-              </p>
-              <div class="grid grid-cols-3 gap-4 mb-5">
-                <div class="text-center p-3 rounded-lg" style="background:#0a0f18; border:1px solid #1e2d42;">
-                  <div class="font-display font-bold text-xl" style="color:#10b981;">RT</div>
-                  <div class="text-xs text-muted mt-1">Real-time</div>
-                </div>
-                <div class="text-center p-3 rounded-lg" style="background:#0a0f18; border:1px solid #1e2d42;">
-                  <div class="font-display font-bold text-xl" style="color:#10b981;">JWT</div>
-                  <div class="text-xs text-muted mt-1">Auth & Roles</div>
-                </div>
-                <div class="text-center p-3 rounded-lg" style="background:#0a0f18; border:1px solid #1e2d42;">
-                  <div class="font-display font-bold text-xl" style="color:#10b981;">RSC</div>
-                  <div class="text-xs text-muted mt-1">Server Comp.</div>
-                </div>
-              </div>
+              <ul class="space-y-3 mb-6">
+                <li class="flex gap-3 text-sm text-muted"><span style="color:#f59e0b;flex-shrink:0;">→</span> Mantenedores para ingesta y gestión masiva de datos desde archivos Excel; validación y procesamiento backend en .NET.</li>
+                <li class="flex gap-3 text-sm text-muted"><span style="color:#f59e0b;flex-shrink:0;">→</span> Dashboards con Apache Echarts y gestión de estado global con NgRx; despliegue en Azure con pipelines CI/CD.</li>
+                <li class="flex gap-3 text-sm text-muted"><span style="color:#f59e0b;flex-shrink:0;">→</span> Stored Procedures creados y optimizados según requerimientos; modelado de estructuras de datos en SQL Server.</li>
+                <li class="flex gap-3 text-sm text-muted"><span style="color:#f59e0b;flex-shrink:0;">→</span> APIs con NestJS + Node.js para servicios específicos; control de versiones con Azure Repos y Bitbucket.</li>
+              </ul>
               <div class="flex flex-wrap gap-2">
-                <span class="tag" style="background:#0d1a14; color:#10b981;">WebSockets</span>
-                <span class="tag" style="background:#0d1a14; color:#10b981;">JWT</span>
-                <span class="tag" style="background:#111; color:#e0e0e0;">App Router</span>
-                <span class="tag" style="background:#041215; color:#00d4ff;">Tailwind</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="reveal project-card">
-          <div class="grid lg:grid-cols-5 gap-0">
-            <div class="lg:col-span-2 p-8 flex items-center justify-center" style="background:linear-gradient(135deg, rgba(0,212,255,0.08) 0%, rgba(124,58,237,0.06) 100%); border-right:1px solid #1e2d42;">
-              <div class="text-center">
-                <div class="w-20 h-20 rounded-2xl mx-auto mb-4 flex items-center justify-center" style="background:rgba(0,212,255,0.1); border:1px solid rgba(0,212,255,0.25);">
-                  <svg class="w-10 h-10" fill="none" stroke="#00d4ff" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"/></svg>
-                </div>
-                <div class="flex flex-wrap gap-2 justify-center">
-                  <span class="tag" style="background:rgba(221,0,49,0.12); color:#dd0031;">Angular</span>
-                  <span class="tag" style="background:rgba(81,43,212,0.12); color:#a78bfa;">.NET</span>
-                  <span class="tag" style="background:rgba(245,158,11,0.12); color:#f59e0b;">SQL</span>
-                </div>
-              </div>
-            </div>
-            <div class="lg:col-span-3 p-8">
-              <div class="flex items-start justify-between mb-3">
-                <span class="font-mono text-xs" style="color:#4a6080;">03 / ANALYTICS</span>
-                <div class="flex gap-2">
-                  <div class="w-2 h-2 rounded-full bg-accent3 mt-1"></div>
-                  <span class="text-xs text-muted">Producción</span>
-                </div>
-              </div>
-              <h3 class="font-display font-bold text-2xl mb-3" style="color:#f0f6ff;">Reporting & Analytics</h3>
-              <p class="text-muted text-sm leading-relaxed mb-5">
-                Sistema de reportes con dashboards interactivos en Angular. Queries optimizadas con CTEs e índices en SQL Server, expuestas por APIs .NET con caché. Visualización con Chart.js y exportación Excel/PDF.
-              </p>
-              <div class="grid grid-cols-3 gap-4 mb-5">
-                <div class="text-center p-3 rounded-lg" style="background:#0a0f18; border:1px solid #1e2d42;">
-                  <div class="font-display font-bold text-xl" style="color:#00d4ff;">-60%</div>
-                  <div class="text-xs text-muted mt-1">Query time</div>
-                </div>
-                <div class="text-center p-3 rounded-lg" style="background:#0a0f18; border:1px solid #1e2d42;">
-                  <div class="font-display font-bold text-xl" style="color:#00d4ff;">10+</div>
-                  <div class="text-xs text-muted mt-1">Report types</div>
-                </div>
-                <div class="text-center p-3 rounded-lg" style="background:#0a0f18; border:1px solid #1e2d42;">
-                  <div class="font-display font-bold text-xl" style="color:#00d4ff;">XLS</div>
-                  <div class="text-xs text-muted mt-1">Export</div>
-                </div>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="tag" style="background:#1a1205; color:#f59e0b;">CTEs</span>
-                <span class="tag" style="background:#1a1205; color:#f59e0b;">Índices</span>
-                <span class="tag" style="background:#0e0a1f; color:#a78bfa;">Caché</span>
-                <span class="tag" style="background:#041215; color:#00d4ff;">Chart.js</span>
-                <span class="tag" style="background:#1a0a0e; color:#dd0031;">Angular</span>
+                <span class="tag" style="background:#1a1205;color:#f59e0b;">Entity Framework</span>
+                <span class="tag" style="background:#0e0a1f;color:#a78bfa;">NgRx</span>
+                <span class="tag" style="background:#041215;color:#00d4ff;">Azure Repos</span>
+                <span class="tag" style="background:#1a0a0e;color:#dd0031;">Figma</span>
               </div>
             </div>
           </div>
@@ -852,202 +487,153 @@
 
   <!-- EXPERIENCE SECTION -->
   <section id="experience" class="py-28">
-    <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-6">
       <div class="reveal mb-16">
         <div class="tech-badge mb-4" style="display:inline-flex;">03. EXPERIENCIA</div>
-        <h2 class="font-display text-4xl lg:text-5xl font-bold" style="color:#f0f6ff;">
-          Mi trayectoria<br/><span style="color:#00d4ff;">profesional</span>
-        </h2>
+        <h2 class="font-display text-4xl lg:text-5xl font-bold" style="color:#f0f6ff;">Mi trayectoria<br/><span style="color:#00d4ff;">profesional</span></h2>
       </div>
-
       <div class="grid lg:grid-cols-2 gap-16">
+
         <!-- Timeline -->
         <div class="reveal">
           <div class="timeline-item">
-            <div class="mb-1 flex items-center gap-3">
-              <h3 class="font-display font-bold text-lg" style="color:#f0f6ff;">Senior Full-Stack Developer</h3>
-            </div>
-            <p class="font-mono text-xs mb-3" style="color:#00d4ff;">2022 — Presente · Lima, Perú</p>
-            <p class="text-muted text-sm leading-relaxed">Desarrollo de módulos enterprise con Angular + .NET. Diseño de arquitecturas full-stack, optimización de stored procedures y mentoring del equipo técnico.</p>
-            <div class="flex flex-wrap gap-2 mt-3">
-              <span class="tag" style="background:#041215; color:#00d4ff;">Angular</span>
-              <span class="tag" style="background:#0e0a1f; color:#a78bfa;">.NET 8</span>
-              <span class="tag" style="background:#1a1205; color:#f59e0b;">SQL Server</span>
-            </div>
+            <h3 class="font-display font-bold text-lg mb-1" style="color:#f0f6ff;">Analista Programador Full Stack</h3>
+            <p class="font-mono text-xs mb-1" style="color:#00d4ff;">NttData</p>
+            <p class="font-mono text-xs mb-3" style="color:#4a6080;">Oct 2025 – Ene 2026</p>
+            <p class="text-muted text-sm leading-relaxed">Angular con NgRx, NestJS + TypeORM, pruebas con Jest, Apache Echarts y gestión ágil con Jira.</p>
           </div>
-
           <div class="timeline-item">
-            <div class="mb-1">
-              <h3 class="font-display font-bold text-lg" style="color:#f0f6ff;">Mid Full-Stack Developer</h3>
-            </div>
-            <p class="font-mono text-xs mb-3" style="color:#7c3aed;">2020 — 2022 · Lima, Perú</p>
-            <p class="text-muted text-sm leading-relaxed">Construcción de APIs REST con NestJS y aplicaciones Next.js. Implementación de autenticación, roles y dashboards de reportes.</p>
-            <div class="flex flex-wrap gap-2 mt-3">
-              <span class="tag" style="background:#0d1a14; color:#e0234e;">NestJS</span>
-              <span class="tag" style="background:#111; color:#e0e0e0;">Next.js</span>
-            </div>
+            <h3 class="font-display font-bold text-lg mb-1" style="color:#f0f6ff;">Analista Programador Full Stack</h3>
+            <p class="font-mono text-xs mb-1" style="color:#7c3aed;">Zeit Perú</p>
+            <p class="font-mono text-xs mb-3" style="color:#4a6080;">Ago 2024 – May 2025</p>
+            <p class="text-muted text-sm leading-relaxed">Angular, React, Next.js, NestJS + TypeORM, .NET Core, SQL Server; SUNAT + Sentinel; Azure DevOps.</p>
           </div>
-
           <div class="timeline-item">
-            <div class="mb-1">
-              <h3 class="font-display font-bold text-lg" style="color:#f0f6ff;">Junior Developer</h3>
-            </div>
-            <p class="font-mono text-xs mb-3" style="color:#10b981;">2018 — 2020 · Lima, Perú</p>
-            <p class="text-muted text-sm leading-relaxed">Primeros pasos en Angular y desarrollo backend con .NET Framework. Bases sólidas en SQL Server y diseño de bases de datos relacionales.</p>
-            <div class="flex flex-wrap gap-2 mt-3">
-              <span class="tag" style="background:#1a0a0e; color:#dd0031;">Angular</span>
-              <span class="tag" style="background:#1a1205; color:#f59e0b;">SQL</span>
-            </div>
+            <h3 class="font-display font-bold text-lg mb-1" style="color:#f0f6ff;">Analista Programador Full Stack</h3>
+            <p class="font-mono text-xs mb-1" style="color:#10b981;">Stefanini – Telefónica</p>
+            <p class="font-mono text-xs mb-3" style="color:#4a6080;">Ago 2022 – Jul 2024</p>
+            <p class="text-muted text-sm leading-relaxed">Design System Movistar, catálogos Angular, Next.js SEO, .NET + Dapper, Liferay, Jasmine/Karma.</p>
+          </div>
+          <div class="timeline-item">
+            <h3 class="font-display font-bold text-lg mb-1" style="color:#f0f6ff;">Full Stack Developer</h3>
+            <p class="font-mono text-xs mb-1" style="color:#f59e0b;">Lucky SAC</p>
+            <p class="font-mono text-xs mb-3" style="color:#4a6080;">Ene 2022 – Ago 2022</p>
+            <p class="text-muted text-sm leading-relaxed">Angular + Material UI, .NET MVC, Entity Framework, SQL Server SP, carga masiva Excel, Azure deploy.</p>
+          </div>
+          <div class="timeline-item">
+            <h3 class="font-display font-bold text-lg mb-1" style="color:#f0f6ff;">Full Stack Developer</h3>
+            <p class="font-mono text-xs mb-1" style="color:#e0234e;">Reinnovatech</p>
+            <p class="font-mono text-xs mb-3" style="color:#4a6080;">Sep 2021 – Ene 2022</p>
+            <p class="text-muted text-sm leading-relaxed">Angular, NgRx, NestJS, CI/CD Azure DevOps, Java + Laravel + MySQL, PostgreSQL y MongoDB.</p>
+          </div>
+          <div class="timeline-item">
+            <h3 class="font-display font-bold text-lg mb-1" style="color:#f0f6ff;">Full Stack Developer</h3>
+            <p class="font-mono text-xs mb-1" style="color:#a78bfa;">Emapa · Gael SAC</p>
+            <p class="font-mono text-xs mb-3" style="color:#4a6080;">Ene 2020 – Sep 2021</p>
+            <p class="text-muted text-sm leading-relaxed">Angular, .NET, Dapper, EF, PostgreSQL, MySQL; prototipos en Figma; bases sólidas Full Stack.</p>
           </div>
         </div>
 
-        <!-- Stats + Philosophy -->
+        <!-- Stats + Education + Philosophy -->
         <div class="reveal space-y-6">
-          <!-- Stat cards -->
           <div class="grid grid-cols-2 gap-4">
             <div class="skill-card text-center" style="padding:24px 16px;">
-              <div class="font-display font-800 text-4xl mb-2" style="font-weight:800; background:linear-gradient(135deg,#00d4ff,#7c3aed); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">5+</div>
+              <div class="font-display text-4xl mb-2" style="font-weight:800;background:linear-gradient(135deg,#00d4ff,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">6+</div>
               <div class="text-muted text-sm">Años de experiencia</div>
             </div>
             <div class="skill-card text-center" style="padding:24px 16px;">
-              <div class="font-display font-800 text-4xl mb-2" style="font-weight:800; background:linear-gradient(135deg,#10b981,#00d4ff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">20+</div>
-              <div class="text-muted text-sm">Proyectos entregados</div>
+              <div class="font-display text-4xl mb-2" style="font-weight:800;background:linear-gradient(135deg,#10b981,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">7</div>
+              <div class="text-muted text-sm">Empresas</div>
             </div>
             <div class="skill-card text-center" style="padding:24px 16px;">
-              <div class="font-display font-800 text-4xl mb-2" style="font-weight:800; background:linear-gradient(135deg,#f59e0b,#ef4444); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">5</div>
-              <div class="text-muted text-sm">Tecnologías core</div>
+              <div class="font-display text-4xl mb-2" style="font-weight:800;background:linear-gradient(135deg,#f59e0b,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">16+</div>
+              <div class="text-muted text-sm">Tecnologías</div>
             </div>
             <div class="skill-card text-center" style="padding:24px 16px;">
-              <div class="font-display font-800 text-4xl mb-2" style="font-weight:800; background:linear-gradient(135deg,#a78bfa,#e0234e); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">∞</div>
+              <div class="font-display text-4xl mb-2" style="font-weight:800;background:linear-gradient(135deg,#a78bfa,#e0234e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">∞</div>
               <div class="text-muted text-sm">Bugs resueltos</div>
             </div>
           </div>
 
-          <!-- Philosophy card -->
-          <div class="skill-card" style="--accent-line: linear-gradient(90deg, #00d4ff, #7c3aed);">
-            <div class="font-mono text-xs mb-3" style="color:#4a6080;">// FILOSOFÍA</div>
-            <p class="text-sm leading-relaxed" style="color:#c8d8ec;">
-              Creo en código limpio, arquitecturas escalables y en entender
-              el problema antes de escribir la primera línea. Cada capa del
-              stack importa: desde el índice SQL hasta la animación CSS.
-            </p>
-            <div class="mt-4 pt-4" style="border-top:1px solid #1e2d42;">
-              <div class="font-mono text-xs space-y-1" style="color:#4a6080;">
-                <div>✓ Clean Architecture first</div>
-                <div>✓ Performance siempre en mente</div>
-                <div>✓ Iteración y feedback rápido</div>
-                <div>✓ Documentación como ciudadano de primera</div>
+          <!-- Education -->
+          <div class="skill-card" style="--accent-line:linear-gradient(90deg,#7c3aed,#00d4ff);">
+            <div class="font-mono text-xs mb-4" style="color:#4a6080;">// EDUCACIÓN</div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);">
+                <svg class="w-5 h-5" style="color:#a78bfa;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
+              </div>
+              <div>
+                <h4 class="font-display font-bold" style="color:#f0f6ff;">Instituto Superior Tecnológico IDAT</h4>
+                <p class="text-muted text-sm mt-1">Telemática, Informática y Sistemas</p>
+                <p class="font-mono text-xs mt-2" style="color:#4a6080;">2017 – 2021</p>
               </div>
             </div>
           </div>
+
+          <!-- Philosophy -->
+          <div class="skill-card" style="--accent-line:linear-gradient(90deg,#00d4ff,#10b981);">
+            <div class="font-mono text-xs mb-3" style="color:#4a6080;">// FILOSOFÍA</div>
+            <p class="text-sm leading-relaxed" style="color:#c8d8ec;">Me adapto a los requerimientos de cada cliente con foco en código limpio, arquitecturas escalables y experiencia del usuario final. Cada capa del stack importa.</p>
+            <div class="mt-4 pt-4 font-mono text-xs space-y-1" style="border-top:1px solid #1e2d42;color:#4a6080;">
+              <div>✓ Arquitectura modular y reutilizable</div>
+              <div>✓ Performance y optimización siempre en mente</div>
+              <div>✓ Flujos ágiles: Jira, Azure Boards, sprints</div>
+              <div>✓ Mejora continua y calidad del código</div>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- CONTACT SECTION -->
   <section id="contact" class="py-28 relative overflow-hidden">
-    <!-- Glow bg -->
     <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <div style="width:600px; height:600px; background:radial-gradient(circle, rgba(0,212,255,0.05) 0%, transparent 70%); border-radius:50%;"></div>
+      <div style="width:600px;height:600px;background:radial-gradient(circle,rgba(0,212,255,0.05) 0%,transparent 70%);border-radius:50%;"></div>
     </div>
-
     <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
       <div class="reveal mb-8">
         <div class="tech-badge mb-6" style="display:inline-flex;">04. CONTACTO</div>
-        <h2 class="font-display text-5xl lg:text-6xl font-bold mb-6" style="color:#f0f6ff; font-weight:800;">
+        <h2 class="font-display font-bold mb-6" style="font-size:clamp(2.5rem,6vw,4rem);font-weight:800;color:#f0f6ff;">
           ¿Construimos algo<br/>
-          <span style="background:linear-gradient(135deg,#00d4ff,#7c3aed); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">juntos?</span>
+          <span style="background:linear-gradient(135deg,#00d4ff,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">juntos?</span>
         </h2>
-        <p class="text-muted text-lg max-w-lg mx-auto leading-relaxed">
-          Disponible para proyectos freelance y oportunidades full-time. Siempre abierto a conversar sobre tecnología.
-        </p>
+        <p class="text-muted text-lg max-w-lg mx-auto leading-relaxed">Disponible para proyectos y nuevas oportunidades. Siempre abierto a conversar sobre tecnología.</p>
       </div>
-
       <div class="reveal grid sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-10">
-        <a href="mailto:fer@email.com" class="contact-link" style="justify-content:center;">
-          <svg class="w-5 h-5" style="color:#00d4ff;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-          <span class="font-mono text-sm">fer@email.com</span>
+        <a href="mailto:fernando.ancajima99@gmail.com" class="contact-link" style="justify-content:center;">
+          <svg class="w-5 h-5 flex-shrink-0" style="color:#00d4ff;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+          <span class="font-mono text-xs">fernando.ancajima99@gmail.com</span>
         </a>
-        <a href="https://linkedin.com/in/fer" class="contact-link" style="justify-content:center;">
-          <svg class="w-5 h-5" style="color:#00d4ff;" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <a href="tel:+51922569622" class="contact-link" style="justify-content:center;">
+          <svg class="w-5 h-5 flex-shrink-0" style="color:#10b981;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+          <span class="font-mono text-sm">922 569 622</span>
+        </a>
+        <a href="https://www.linkedin.com/in/fernandoancajima" target="_blank" class="contact-link" style="justify-content:center;">
+          <svg class="w-5 h-5 flex-shrink-0" style="color:#00d4ff;" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           <span class="font-mono text-sm">LinkedIn</span>
         </a>
-        <a href="https://github.com/fer" class="contact-link" style="justify-content:center;">
-          <svg class="w-5 h-5" style="color:#00d4ff;" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        <a href="https://github.com/FerNanDoAnc" target="_blank" class="contact-link" style="justify-content:center;">
+          <svg class="w-5 h-5 flex-shrink-0" style="color:#c8d8ec;" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
           <span class="font-mono text-sm">GitHub</span>
         </a>
-        <a href="https://wa.me/51999999999" class="contact-link" style="justify-content:center;">
-          <svg class="w-5 h-5" style="color:#10b981;" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          <span class="font-mono text-sm">WhatsApp</span>
-        </a>
       </div>
-
-      <!-- CTA pill -->
-      <div class="reveal inline-flex items-center gap-3 px-6 py-3 rounded-full" style="background:rgba(0,212,255,0.06); border:1px solid rgba(0,212,255,0.2);">
+      <div class="reveal inline-flex items-center gap-3 px-6 py-3 rounded-full" style="background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.2);">
         <div class="w-2 h-2 rounded-full bg-accent3 animate-pulse-slow"></div>
-        <span class="font-mono text-sm" style="color:#c8d8ec;">Disponible para proyectos · Lima, Perú</span>
+        <span class="font-mono text-sm" style="color:#c8d8ec;">Disponible · Lima, Perú · 2026</span>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer style="border-top:1px solid #1e2d42; padding:24px 0;">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <span class="font-mono text-xs" style="color:#4a6080;">© 2026 Fer · Full-Stack Developer · Lima, Perú</span>
-      <div class="flex items-center gap-6">
-        <span class="font-mono text-xs" style="color:#4a6080;">Angular · NestJS · .NET · Next.js · SQL</span>
-        <div class="flex items-center gap-2">
-          <div class="w-2 h-2 rounded-full bg-accent3 animate-pulse-slow"></div>
-          <span class="font-mono text-xs" style="color:#10b981;">online</span>
-        </div>
-      </div>
+  <footer style="border-top:1px solid #1e2d42;padding:24px 0;">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <span class="font-mono text-xs" style="color:#4a6080;">© 2026 Fernando Ancajima · Full Stack Developer · Lima, Perú</span>
+      <span class="font-mono text-xs" style="color:#4a6080;">Angular · NestJS · .NET · Next.js · SQL Server</span>
     </div>
   </footer>
 
-  <script>
-    // Cursor
-    const cursor = document.getElementById('cursor');
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.left = e.clientX - 4 + 'px';
-      cursor.style.top = e.clientY - 4 + 'px';
-    });
-
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          // Animate progress bars when visible
-          entry.target.querySelectorAll('.progress-fill').forEach(bar => {
-            const w = bar.getAttribute('data-width');
-            if (w) setTimeout(() => { bar.style.width = w + '%'; }, 200);
-          });
-        }
-      });
-    }, { threshold: 0.1 });
-    reveals.forEach(r => observer.observe(r));
-
-    // Also animate progress bars in hero area
-    document.querySelectorAll('.progress-fill[data-width]').forEach(bar => {
-      if (!bar.closest('.reveal')) {
-        setTimeout(() => { bar.style.width = bar.getAttribute('data-width') + '%'; }, 600);
-      }
-    });
-
-    // Nav active link
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 100) current = s.id;
-      });
-      navLinks.forEach(l => {
-        l.style.color = l.getAttribute('href') === '#' + current ? '#00d4ff' : '#4a6080';
-      });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
